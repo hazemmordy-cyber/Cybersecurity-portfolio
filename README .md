@@ -43,7 +43,7 @@ This portfolio demonstrates practical cybersecurity labs in isolated environment
 
 **Skills:** Nmap, Kali Linux, Windows 11, ARP, Firewall Analysis
 
- [View Project →](./projects/enterprise-network-discovery-1/README.md)
+ [View Project →](https://github.com/hazemmordy-cyber/Cybersecurity-portfolio/blob/main/projects/01-enterprise-network-discovery-lab/README%20.md)
 
 ---
 
