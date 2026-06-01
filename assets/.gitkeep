@@ -1,0 +1,25 @@
+# Assets directory for diagrams and images
+
+
+┌─────────────────────────────────────────────┐
+│            CYBERSECURITY PORTFOLIO          │
+│                 LAB ENVIRONMENT             │
+├─────────────────────────────────────────────┤
+│                                             │
+│   ┌──────────┐        ┌──────────┐        │
+│   │  Kali    │        │ Windows  │        │
+│   │  Linux   │◄──────►│   11     │        │
+│   │(Analyst) │  ARP   │ (Target) │        │
+│   └────┬─────┘        └────┬─────┘        │
+│        │                   │              │
+│        │  Nmap Scans       │ Firewall     │
+│        │  (TCP/UDP)        │ Blocks:      │
+│        ▼                   │ - ICMP       │
+│   ┌──────────┐             │ - Ports 135, │
+│   │ Filtered │             │   139,445,   │
+│   │ Results  │             │   3389       │
+│   └──────────┘             └──────────────┘
+│                                             │
+│         cyber-lab Internal Network         │
+│              192.168.3.0/24                │
+└─────────────────────────────────────────────┘
