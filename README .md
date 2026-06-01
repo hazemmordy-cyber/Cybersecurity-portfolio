@@ -110,7 +110,7 @@ Building practical, documentable cybersecurity experience through enterprise-sty
 
 ##  Links
 
--  [LinkedIn](www.linkedin.com/in/hazem-mordy)
+-  [LinkedIn](https://www.linkedin.com/in/hazem-mordy-115763353/)
 -  [GitHub Profile](https://github.com/hazemmordy-cyber)
 
 ---
