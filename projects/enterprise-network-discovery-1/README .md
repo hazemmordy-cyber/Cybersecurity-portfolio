@@ -1,24 +1,14 @@
-# Enterprise Network Discovery & Attack Surface Mapping
+# Enterprise Network Discovery & Attack Surface Analysis
 
-## Executive Summary
-
-This project simulates the reconnaissance phase of an internal enterprise security assessment. The objective was to identify active hosts, enumerate services, and analyze exposed attack surfaces within a controlled, isolated virtual environment.
+## 1. Executive Summary
+This project simulates an internal enterprise reconnaissance scenario where a security analyst identifies active systems, exposed services, and potential attack surfaces within a controlled virtual environment.
 
 **Key Finding:** The target system (Windows 11) is protected by a restrictive host-based firewall blocking all common TCP and UDP ports — a strong security baseline that still allows host discovery via ARP.
 
----
-
-## Environment Architecture
-
-| Component | Details |
-|-----------|---------|
-| Analyst Machine | Kali Linux (VirtualBox) |
-| Target System | Windows 11 (VirtualBox) |
-| Network Type | VirtualBox Internal Network (`cyber-lab`) |
-| Network Range | 192.168.3.0/24 |
-
-
-
+## 2. Environment Architecture
+- VirtualBox isolated network (`cyber-lab`)
+- Windows 11 endpoint system (Target)
+- Kali Linux security analysis machine (Analyst)
 
 cyber-lab (Internal Network)
 │
@@ -27,41 +17,49 @@ cyber-lab (Internal Network)
 
 
 
+## 3. Methodology (Security Workflow)
 
----
+### Phase 1: Asset Discovery
+- Host identification using ICMP scanning
+- Network range validation via `ipconfig` and `ip addr`
 
-## Methodology
+### Phase 2: Service Enumeration
+- Port scanning using Nmap (`-sV -O`)
+- Service version detection
+- OS fingerprinting
+- Targeted scans for Windows-specific ports (135,139,445,3389)
+- UDP scan (`--top-ports 100`)
 
-### Phase 1: Network Discovery
-- Identified IP addresses via `ipconfig` (Windows) and `ip addr` (Kali)
-- Tested connectivity using ICMP (ping)
+### Phase 3: Attack Surface Mapping
+- Identification of exposed services
+- Initial risk categorization
+- Exposure analysis from attacker perspective
 
-### Phase 2: Host Sweeping
-- Used `nmap -sn` to discover live hosts without relying on ICMP
-
-### Phase 3: Service Enumeration
-- Performed TCP port scan: `nmap -sV -O`
-- Targeted specific Windows ports: `-p 135,139,445,3389 -Pn`
-- UDP scan: `nmap -sU --top-ports 100`
-
-### Phase 4: Attack Surface Analysis
-- Interpreted results in enterprise security context
-- Assessed risk levels and mitigation thinking
-
----
-
-## Key Findings
+## 4. Key Observations
 
 | Finding | Details |
 |---------|---------|
 | Active Host | `192.168.3.12` confirmed alive via ARP |
 | ICMP Behavior | Ping from Kali → Windows: **FAILED** |
 | TCP Ports | All 1000 scanned ports: **filtered** |
-| UDP Ports | All 100 scanned ports: **open\|filtered** |
-| Windows Ports (135,139,445,3389) | All **filtered** |
-| OS Fingerprint | Inconclusive due to firewall |
+| UDP Ports | All 100 scanned ports: **open|filtered** |
+| Windows Ports | All filtered (135,139,445,3389) |
 
-### Attack Surface Map
+## 5. Security Interpretation (IMPORTANT)
+
+The presence of a restrictive firewall blocking all incoming connections indicates a **strong security baseline**. However, from an enterprise perspective:
+
+**Why this matters:**
+- Host remains discoverable via ARP (unavoidable in internal networks)
+- No attack surface exposed externally from scanning perspective
+- Firewall is functioning as intended
+
+**In real enterprise environments, such exposure would require:**
+- Network segmentation to limit lateral movement
+- Regular firewall rule reviews
+- Continuous monitoring for unauthorized scanning attempts
+
+## 6. Attack Surface Map
 
 | Host | Port | Service | Risk Level | Notes |
 |------|------|---------|------------|-------|
@@ -70,73 +68,22 @@ cyber-lab (Internal Network)
 | 192.168.3.12 | 445 | microsoft-ds | Low (filtered) | Blocked by Windows Firewall |
 | 192.168.3.12 | 3389 | ms-wbt-server | Low (filtered) | Blocked by Windows Firewall |
 
----
-
-## Security Interpretation
-
-**What does this mean in real enterprise context?**
-
-1. **Restrictive firewall is a security control** — Not a vulnerability. The target is configured to block inbound connections by default.
-
-2. **ARP exposure is unavoidable** — In internal networks, hosts must respond to ARP to communicate. This is why network segmentation and monitoring are critical.
-
-3. **"No results" is a finding** — Understanding when ports are *filtered* vs. *closed* vs. *open* is essential for accurate threat assessment.
-
-4. **Enterprise relevance** — Many internal servers have similar configurations. The security question is not "can I hack it?" but "is this configuration appropriate for the system's role?"
-
----
-
-## Risk Assessment
-
-| Risk Area | Level | Justification |
-|-----------|-------|---------------|
-| External Attack Surface | Low | No exposed ports from scanning perspective |
-| Internal Visibility | Medium | Host discoverable via ARP (by design) |
-| Misconfiguration Risk | Low | Firewall behaving as expected |
-
----
-
-## Mitigation Thinking (For Enterprise)
-
-If an organization wants to reduce risk further:
-- Implement network segmentation (isolate sensitive hosts)
-- Enable advanced firewall logging to detect scanning attempts
-- Use host-based intrusion detection (HIDS) for internal monitoring
-- Regular review of firewall rules for operational exceptions
-
----
-
-## Lessons Learned
-
-- Firewalls can block ICMP but still allow ARP — understanding network layers matters
-- A "clean" scan result doesn't mean the host is absent; it means controls are working
-- Documentation and interpretation separate a technician from an analyst
-
----
-
-## Evidence
-
-📸 Screenshots available in [`./screenshots/`](./screenshots/)
-
-1. `ipconfig-windows.png` — Windows IP configuration
-2. `ping-fail-kali.png` — Failed ping from Kali to Windows
-3. `nmap-sn-sweep.png` — Network sweep showing live host via ARP
-4. `nmap-sV-O-results.png` — Service enumeration showing filtered ports
-
----
-
-## Tools Used
-
+## 7. Tools Used
 - Nmap 7.95
-- Ping (ICMP)
-- VirtualBox 7.x (Internal Networking)
-- Windows 11 (Target)
-- Kali Linux (Analysis)
+- ICMP utilities (ping)
+- VirtualBox Internal Networking
 
----
+## 8. Lessons Learned
+This exercise demonstrated how early-stage reconnaissance forms the foundation of both penetration testing and SOC-level visibility into network behavior. A "clean" scan result doesn't mean the host is absent — it means security controls are working.
 
-## Conclusion
+## 9. Evidence
+📸 Screenshots available in [`./screenshots/`](./screenshots/)
+- `ipconfig-windows.png`
+- `ping-fail-kali.png`
+- `nmap-sn-sweep.png`
+- `nmap-sV-O-results.png`
 
-This lab demonstrates that effective security assessments require more than running tools. The ability to interpret filtered results, document findings professionally, and translate technical observations into business-relevant risk language is what defines a security analyst.
-
-The target system exhibited a strong security baseline (restrictive firewall). From an enterprise perspective, this configuration reduces external attack surface while maintaining internal network functionality — a balanced approach when combined with monitoring and segmentation.
+## 10. Future Improvements
+- Add automated scanning scripts (Python)
+- Expand network to multi-host enterprise simulation
+- Introduce logging and monitoring layer
