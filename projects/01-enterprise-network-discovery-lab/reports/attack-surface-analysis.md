@@ -140,6 +140,54 @@ For enterprise environments with similar configurations:
 
 ---
 
+## Executive Summary
+
+An internal reconnaissance assessment was performed within an isolated enterprise-style lab environment to identify active assets, exposed services, and potential attack surface areas.
+
+The assessment focused on understanding host visibility, service exposure, and network reachability from an attacker perspective while documenting security observations relevant to internal network defense.
+
+## Assessment Scope
+
+Target Environment:
+- Windows 11 Virtual Machine
+
+Assessment Host:
+- Kali Linux
+
+Network Type:
+- Internal VirtualBox Network
+
+Objective:
+- Host discovery
+- Service enumeration
+- Attack surface identification
+
+## Security Observations
+
+- The target system responded successfully to ICMP requests, confirming network reachability.
+
+- Service enumeration revealed multiple exposed services that increase the observable attack surface of the system.
+
+- Network visibility allows an attacker to gather system information prior to exploitation attempts.
+
+- Enumeration activities provide critical intelligence for both attackers and defenders.
+
+## Risk Analysis
+
+ The presence of exposed services increases the potential attack surface of the target system.
+
+While no exploitation activities were performed, publicly exposed services may become entry points if misconfigured, outdated, or improperly secured.
+
+Proper segmentation, service hardening, and monitoring are essential to reduce exposure risk.
+
+## Recommendations
+
+- Limit unnecessary exposed services
+- Implement host-based firewall controls
+- Regularly review service configurations
+- Monitor internal network discovery activity
+- Apply security hardening practices
+
 ## Appendix: Commands Used
 
 ```bash
