@@ -122,3 +122,9 @@
 ## Summary Statement
 
 The target system (Windows 11) demonstrates a **mature security baseline** with no exploitable services exposed to the internal network from the scanning perspective. All critical Windows services (SMB, RDP, RPC) are properly filtered by the host-based firewall. The only residual risk is the inconclusive UDP state, which requires further investigation but poses low immediate threat.
+
+## Interpretation
+
+The identified services represent potential entry points that should be reviewed as part of a defensive security strategy.
+
+Risk ratings were assigned based on exposure level, common attacker interest, and potential misuse scenarios.
