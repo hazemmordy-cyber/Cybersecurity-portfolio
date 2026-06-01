@@ -3,6 +3,15 @@
 ## 1. Executive Summary
 This project simulates an internal enterprise reconnaissance scenario where a security analyst identifies active systems, exposed services, and potential attack surfaces within a controlled virtual environment.
 
+##  At a Glance
+
+| Aspect | Summary |
+|--------|---------|
+| **What I did** | Internal network reconnaissance on isolated Windows 11 host |
+| **What I found** | Restrictive firewall blocking all TCP/UDP ports; host discoverable via ARP |
+| **Risk level** | LOW — no exposed attack surface from scanning perspective |
+| **Key skill** | Interpreting filtered results as a security finding, not a failure |
+
 **Key Finding:** The target system (Windows 11) is protected by a restrictive host-based firewall blocking all common TCP and UDP ports — a strong security baseline that still allows host discovery via ARP.
 
 ## 2. Environment Architecture
@@ -108,6 +117,17 @@ Attack surface visibility is essential for proactive security operations — not
 - Nmap 7.95
 - ICMP utilities (ping)
 - VirtualBox Internal Networking
+
+##  What This Project Proves
+
+| Skill | Evidence |
+|-------|----------|
+| Network Reconnaissance | Host discovery via ARP, ICMP analysis |
+| Service Enumeration | Nmap scans for TCP/UDP, port analysis |
+| Firewall Behavior Analysis | Documented filtered states, ICMP blocking |
+| Security Interpretation | Threat + Defensive perspectives written |
+| Professional Documentation | Risk matrix, attack surface map, screenshots |
+| Enterprise Mindset | Recommendations for segmentation, monitoring |
 
 ## 8. Lessons Learned
 This exercise demonstrated how early-stage reconnaissance forms the foundation of both penetration testing and SOC-level visibility into network behavior. A "clean" scan result doesn't mean the host is absent — it means security controls are working.
