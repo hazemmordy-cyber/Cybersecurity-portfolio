@@ -1,172 +1,117 @@
-# 🌐 Enterprise Network Discovery & Attack Surface Analysis
+# Hazem Mordey Galal
 
-> Simulating real-world internal reconnaissance — from host discovery to risk interpretation.
+**Computer Science Student | Cybersecurity Track**
 
----
-
-## 📋 Project Overview
-
-| Aspect | Details |
-|--------|---------|
-| **Role** | Junior Security Analyst |
-| **Objective** | Identify active hosts, enumerate services, map attack surface in enterprise-like environment |
-| **Environment** | Isolated Virtual Network (VirtualBox) |
-| **Tools** | Nmap, Kali Linux, Windows 11 |
-| **Status** | ✅ Complete |
+> Building hands-on security experience through enterprise-style projects and technical documentation.
 
 ---
 
-## 🏗️ Network Architecture
+##  About Me
 
-![Network Architecture Diagram](./diagrams/network-architecture.png)
+I am a Computer Science student specializing in Cybersecurity with a strong interest in:
+- Network security and reconnaissance
+- Security operations (SOC) and log analysis
+- Security automation with Python
 
-
-
----
-
-## 🎯 Objectives
-
-- Simulate internal reconnaissance phase of enterprise security assessment
-- Discover active hosts without prior knowledge of the network
-- Enumerate services and identify exposed attack surface
-- Document findings with **security interpretation**, not just raw output
-- Demonstrate analyst-level thinking (not just tool execution)
+This portfolio demonstrates practical cybersecurity labs in isolated environments — not just theory.
 
 ---
 
-## 📁 Project Structure
+##  Technical Areas
 
-enterprise-network-discovery-1/
-├── README.md # This landing page
-├── screenshots/ # Evidence of execution
-├── diagrams/ # Network architecture
-├── raw-results/ # Nmap outputs
-├── reports/ # Detailed analysis
-│ └── attack-surface-analysis.md
-└── findings/ # Risk assessment
-└── service-risk-matrix.md
-
+| Category | Skills |
+|----------|--------|
+| **Networking** | TCP/IP, Subnetting, VLANs, Routing |
+| **Security** | Nmap, Reconnaissance, Attack Surface Analysis, Firewall Behavior |
+| **Monitoring** | Wireshark, Windows Event Logs, Linux Logs (in progress) |
+| **OS** | Kali Linux, Windows 11 |
+| **Virtualization** | VirtualBox, Internal Networking |
+| **Automation** | Python (planned) |
 
 ---
 
-## 🔍 Methodology
+##  Portfolio Projects
 
-### Phase 1: Discovery
-- Identify IP addresses (`ipconfig` / `ip addr`)
-- Test connectivity (ICMP ping)
-- Sweep network for live hosts (`nmap -sn`)
+### 1. Enterprise Network Discovery & Attack Surface Mapping
 
-### Phase 2: Enumeration
-- Service version detection (`nmap -sV -O`)
-- Targeted Windows port scan (135,139,445,3389)
-- UDP top ports scan (`--top-ports 100`)
+**Status:**  Complete
 
-### Phase 3: Analysis
-- Map exposed services
-- Categorize risk levels
-- Interpret findings in enterprise context
+**What I did:**
+- Simulated internal reconnaissance in isolated virtual network (VirtualBox)
+- Discovered active hosts, enumerated services, analyzed firewall behavior
+- Documented findings with security interpretation and risk matrix
+
+**Skills:** Nmap, Kali Linux, Windows 11, ARP, Firewall Analysis
+
+ [View Project →](./projects/enterprise-network-discovery-1/README.md)
 
 ---
 
-## 📊 Key Findings
+### 2. SOC Monitoring & Log Analysis Lab
 
-| Finding | Result |
-|---------|--------|
-| Active Host | ✅ 192.168.3.12 (Windows 11) |
-| ICMP (ping) | ❌ Blocked by firewall |
-| TCP Ports (1000) | 🚫 All filtered |
-| UDP Ports (100) | ⚠️ Open/Filtered (inconclusive) |
-| Windows Services (135,139,445,3389) | 🚫 All filtered |
-| OS Fingerprint | ❌ Inconclusive (firewall interference) |
+**Status:**  In Progress
 
----
+**Planned:**
+- Windows Event Logs (Event Viewer)
+- Linux authentication logs
+- Wireshark traffic analysis
+- Security event correlation
+- Incident response simulation
 
-## 🛡️ Security Interpretation
+**Skills:** Log analysis, Traffic inspection, Threat detection
 
-**What this means in an enterprise context:**
-
-1. **Restrictive firewall is working** — No external attack surface exposed
-2. **ARP visibility is unavoidable** — Hosts must respond to ARP; this is why monitoring matters
-3. **"No results" is a finding** — Filtered ports indicate security controls are functioning
-4. **UDP uncertainty** — Requires further investigation or network-level logging
-
-**Risk Assessment: LOW** — The target demonstrates a strong security baseline.
+📄 [View Project →](./projects/02-soc-monitoring-lab/README.md)
 
 ---
 
-## 📸 Evidence
+### 3. Python Security Automation Tools
 
-| Screenshot | Description |
-|------------|-------------|
-| [ipconfig-windows.png](./screenshots/ipconfig-windows.png) | Windows IP configuration |
-| [ping-fail-kali.png](./screenshots/ping-fail-kali.png) | Failed ICMP from Kali → Windows |
-| [nmap-sn-sweep.png](./screenshots/nmap-sn-sweep.png) | Host discovery via ARP |
-| [nmap-sV-O-results.png](./screenshots/nmap-sV-O-results.png) | Service enumeration (filtered ports) |
+**Status:**  Planned
 
----
-
-## 📈 Risk Matrix (Summary)
-
-| Service | Port | State | Risk Level | Reason |
-|---------|------|-------|------------|--------|
-| msrpc | 135 | Filtered | Low | Blocked by firewall |
-| netbios-ssn | 139 | Filtered | Low | Blocked by firewall |
-| microsoft-ds | 445 | Filtered | Low | SMB properly restricted |
-| ms-wbt-server | 3389 | Filtered | Low | RDP access protected |
-| UDP Services | Top 100 | Open/Filtered | Low-Medium | Requires investigation |
-
-📄 [Full Risk Matrix →](./findings/service-risk-matrix.md)
+**Ideas:**
+- Automated port scanner
+- Log parser for security events
+- IOC extractor from threat feeds
 
 ---
 
-## 📝 Reports
-
-- [Attack Surface Analysis Report](./reports/attack-surface-analysis.md) — Comprehensive documentation with methodology, findings, and recommendations
-
----
-
-## 🧠 Lessons Learned
-
-1. **Documentation separates analysts from technicians** — Interpreting results is the core skill
-2. **Enterprise context changes everything** — Same scan, different meaning based on environment
-3. **Firewall behavior is a finding** — Filtered ports tell a story about security controls
-4. **Visuals matter** — One architecture diagram explains more than paragraphs of text
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] Add automated scanning script (Python)
-- [ ] Expand to multi-host enterprise simulation
-- [ ] Introduce logging and SIEM monitoring layer
-- [ ] Create video walkthrough of assessment process
-
----
-
-## 🛠️ Tools Used
+##  Lab Environment
 
 | Tool | Purpose |
 |------|---------|
-| Nmap 7.95 | Port scanning, service detection, OS fingerprinting |
-| Ping (ICMP) | Connectivity testing |
-| VirtualBox | Internal network isolation |
+| VirtualBox | Virtualization platform |
+| Kali Linux | Security analysis OS |
 | Windows 11 | Target system |
-| Kali Linux | Security analysis platform |
+| Internal Network | Isolated lab environment |
+| Wireshark | Traffic analysis |
+
+![Network Topology](./assets/network-topology.png)
 
 ---
 
-## 🔗 Related Projects
+##  Current Objective
 
-- [SOC Monitoring Lab](../02-soc-monitoring-lab/README.md) *(Coming Soon)*
-- [Python Security Tools](../03-python-security-tools/README.md) *(Coming Soon)*
+Building practical, documentable cybersecurity experience through enterprise-style projects that demonstrate:
+- **Execution** (can I do it?)
+- **Documentation** (can I explain it?)
+- **Interpretation** (do I understand the risk?)
 
 ---
 
-## 📧 Contact
+##  Progress
 
-**Hazem Mordy** — Junior Security Analyst
+| Project | Status | Completion |
+|---------|--------|------------|
+| Network Discovery Lab |  Complete | 100% |
+| SOC Monitoring Lab |  In Progress | 10% |
+| Python Tools |  Planned | 0% |
 
-📁 [GitHub Portfolio](https://github.com/hazemmordy-cyber/Cybersecurity-portfolio)
+---
+
+##  Links
+
+-  [LinkedIn](www.linkedin.com/in/hazem-mordy)
+-  [GitHub Profile](https://github.com/hazemmordy-cyber)
 
 ---
 
