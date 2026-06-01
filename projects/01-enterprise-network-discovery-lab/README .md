@@ -59,6 +59,42 @@ The presence of a restrictive firewall blocking all incoming connections indicat
 - Regular firewall rule reviews
 - Continuous monitoring for unauthorized scanning attempts
 
+##  Threat Perspective
+
+From an attacker perspective, exposed network services provide initial visibility into the target environment. Even when ports are filtered, the following information can still be valuable:
+
+- **Host discovery via ARP** confirms a live target exists
+- **Firewall behavior** reveals that security controls are present (which itself is intelligence)
+- **Filtered vs. closed ports** helps attackers understand the defensive posture
+
+Service enumeration in this lab revealed:
+- No directly accessible services
+- Restrictive inbound filtering
+- UDP ambiguity (open|filtered state)
+
+**Attacker takeaway:** This target requires more sophisticated methods (social engineering, phishing, or supply chain) rather than direct network exploitation.
+
+---
+
+##  Defensive Perspective
+
+From a defensive security standpoint, identifying exposed services helps security teams:
+
+- **Reduce unnecessary exposure** — Verify why each service is running
+- **Improve segmentation** — Isolate critical hosts even from internal scanning
+- **Harden systems** — Apply principle of least privilege
+- **Monitor critical services** — Alert on unauthorized access attempts
+
+**Key defensive insight from this assessment:**
+
+The Windows 11 host demonstrates a **strong security baseline** with all common ports filtered. However, ARP visibility is unavoidable in internal networks. This reinforces the need for:
+
+1. **Network segmentation** — Even internal scanning should be limited
+2. **Firewall logging** — Detect reconnaissance attempts
+3. **Host-based monitoring** — Catch what network controls miss
+
+Attack surface visibility is essential for proactive security operations — not to enable attacks, but to close gaps before they can be exploited.
+
 ## 6. Attack Surface Map
 
 | Host | Port | Service | Risk Level | Notes |
