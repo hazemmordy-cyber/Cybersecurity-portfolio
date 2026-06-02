@@ -23,16 +23,16 @@ This portfolio demonstrates practical cybersecurity labs in isolated environment
 |----------|--------|
 | **Networking** | TCP/IP, Subnetting, VLANs, Routing |
 | **Security** | Nmap, Reconnaissance, Attack Surface Analysis, Firewall Behavior |
-| **Monitoring** | Wireshark, Windows Event Logs, Linux Logs (in progress) |
-| **OS** | Kali Linux, Windows 11 |
+| **Monitoring** | Wireshark, Windows Event Logs, Linux Logs, Wazuh SIEM |
+| **OS** | Kali Linux, Windows 11, Ubuntu (Wazuh Server) |
 | **Virtualization** | VirtualBox, Internal Networking |
-| **Automation** | Python (planned) |
+| **Automation** | Python (socket, argparse, JSON/CSV), Security Tooling |
 
 ---
 
 ##  Portfolio Projects
 
-### 1. Enterprise Network Discovery & Attack Surface Mapping
+### 1.  Enterprise Network Discovery & Attack Surface Mapping
 
 **Status:**  Complete
 
@@ -40,6 +40,7 @@ This portfolio demonstrates practical cybersecurity labs in isolated environment
 - Simulated internal reconnaissance in isolated virtual network (VirtualBox)
 - Discovered active hosts, enumerated services, analyzed firewall behavior
 - Documented findings with security interpretation and risk matrix
+- **Key insight:** "No open ports" is still a finding – it tells us the firewall is working
 
 **Skills:** Nmap, Kali Linux, Windows 11, ARP, Firewall Analysis
 
@@ -47,31 +48,36 @@ This portfolio demonstrates practical cybersecurity labs in isolated environment
 
 ---
 
-### 2. SOC Monitoring & Log Analysis Lab
+### 2.  SOC Monitoring & Log Analysis Lab
 
-**Status:**  In Progress
+**Status:**  Complete
 
-**Planned:**
-- Windows Event Logs (Event Viewer)
-- Linux authentication logs
-- Wireshark traffic analysis
-- Security event correlation
-- Incident response simulation
+**What I did:**
+- Deployed Wazuh SIEM (manager + agent) on isolated network
+- Collected Windows Security Events (Event ID 4625 – failed logons)
+- Simulated RDP brute‑force attack using Kali (hydra)
+- Triggered Wazuh rule 5710 (10+ failures/60s) and documented incident
+- Produced full incident report with timeline, IOCs, and MITRE mapping
 
-**Skills:** Log analysis, Traffic inspection, Threat detection
+**Skills:** Wazuh, Windows Event Logs, Attack simulation, Incident response, SIEM correlation
 
-📄 [View Project →](./projects/02-soc-monitoring-lab/README.md)
+ [View Project →](./projects/02-soc-monitoring-lab/README.md)
 
 ---
 
-### 3. Python Security Automation Tools
+### 3.  Python Security Automation – Port Auditor
 
-**Status:**  Planned
+**Status:**  Complete
 
-**Ideas:**
-- Automated port scanner
-- Log parser for security events
-- IOC extractor from threat feeds
+**What I did:**
+- Built a lightweight TCP port scanner with banner grabbing using Python standard library (socket, argparse, json, csv)
+- Implemented structured logging to JSON and CSV with timestamps
+- Scanned the lab’s Windows 11 target (192.168.3.12) to verify open ports
+- Designed for isolated lab environments, demonstrating automation and data serialisation
+
+**Skills:** Python (socket programming), CLI arguments, Data serialisation (JSON/CSV), Network automation
+
+ [View Project →](./projects/03-python-security-auditor/README.md)
 
 ---
 
@@ -80,10 +86,11 @@ This portfolio demonstrates practical cybersecurity labs in isolated environment
 | Tool | Purpose |
 |------|---------|
 | VirtualBox | Virtualization platform |
-| Kali Linux | Security analysis OS |
+| Kali Linux | Security analysis & attack simulation |
 | Windows 11 | Target system |
-| Internal Network | Isolated lab environment |
-| Wireshark | Traffic analysis |
+| Ubuntu (Wazuh Server) | SIEM platform (Project 2) |
+| Internal Network | Isolated lab environment (cyber-lab) |
+| Wireshark | Traffic analysis (optional) |
 
 ![Network Topology](./assets/network-topology.png)
 
@@ -95,6 +102,7 @@ Building practical, documentable cybersecurity experience through enterprise-sty
 - **Execution** (can I do it?)
 - **Documentation** (can I explain it?)
 - **Interpretation** (do I understand the risk?)
+- **Automation** (can I script it?)
 
 ---
 
@@ -102,9 +110,9 @@ Building practical, documentable cybersecurity experience through enterprise-sty
 
 | Project | Status | Completion |
 |---------|--------|------------|
-| Network Discovery Lab |  Complete | 100% |
-| SOC Monitoring Lab |  In Progress | 10% |
-| Python Tools |  Planned | 0% |
+| Enterprise Network Discovery |  Complete | 100% |
+| SOC Monitoring & Log Analysis |  Complete | 100% |
+| Python Security Port Auditor |  Complete | 100% |
 
 ---
 
