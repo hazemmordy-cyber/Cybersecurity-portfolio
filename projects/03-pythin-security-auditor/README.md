@@ -25,28 +25,20 @@ Build a lightweight, reusable Python script for TCP port discovery and structure
 
 ### 4.1 Clone / Navigate
 
-bash
+``bash
 cd projects/03-python-security-auditor
-4.2 Run the scanner
+
+### 4.2 Run the scanner
 Basic scan (common ports):
-
-
-
-bash
 python src/port_auditor.py 192.168.3.12
+
 Scan specific ports:
-
-
-
-bash
 python src/port_auditor.py 192.168.3.12 --ports 22,80,443,3389
+
 Adjust timeout (seconds):
-
-
-
-bash
 python src/port_auditor.py 192.168.3.12 --timeout 2.0
-4.3 Example output (console)
+
+### 4.3 Example output (console)
 text
 Starting port scan on 192.168.3.12 with timeout 1.0s
 ✗ 21/tcp -> closed
@@ -63,7 +55,7 @@ Open ports details:
 ==================================================
 JSON output saved to: outputs/scan_192.168.3.12_20260602_143022.json
 CSV output saved to: outputs/scan_192.168.3.12_20260602_143022.csv
-4.4 Output files
+### 4.4 Output files
 JSON – structured, machine‑readable.
 
 CSV – easy to open in spreadsheets for analysis.
@@ -77,7 +69,6 @@ json
   "state": "open",
   "service_banner": ""
 }
-
 
 ## 5. Security & Ethical Use
 ⚠️ This tool is for authorised environments only (your own lab, systems you own, or explicit permission). It performs active TCP connections – unauthorised scanning may violate laws or policies. The developer is not responsible for misuse.
