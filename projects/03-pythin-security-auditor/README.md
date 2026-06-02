@@ -39,7 +39,6 @@ Adjust timeout (seconds):
 python src/port_auditor.py 192.168.3.12 --timeout 2.0
 
 ### 4.3 Example output (console)
-text
 Starting port scan on 192.168.3.12 with timeout 1.0s
 ✗ 21/tcp -> closed
 ✗ 22/tcp -> closed
@@ -55,6 +54,7 @@ Open ports details:
 ==================================================
 JSON output saved to: outputs/scan_192.168.3.12_20260602_143022.json
 CSV output saved to: outputs/scan_192.168.3.12_20260602_143022.csv
+
 ### 4.4 Output files
 JSON – structured, machine‑readable.
 
