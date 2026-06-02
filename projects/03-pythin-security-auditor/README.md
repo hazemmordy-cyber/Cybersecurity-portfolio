@@ -23,20 +23,26 @@ Build a lightweight, reusable Python script for TCP port discovery and structure
 
 ## 4. Usage
 
-## 4.1 Clone / Navigate
+### 4.1 Clone / Navigate
 
-``bash
+bash
 cd projects/03-python-security-auditor
 4.2 Run the scanner
 Basic scan (common ports):
+
+
 
 bash
 python src/port_auditor.py 192.168.3.12
 Scan specific ports:
 
+
+
 bash
 python src/port_auditor.py 192.168.3.12 --ports 22,80,443,3389
 Adjust timeout (seconds):
+
+
 
 bash
 python src/port_auditor.py 192.168.3.12 --timeout 2.0
@@ -71,10 +77,12 @@ json
   "state": "open",
   "service_banner": ""
 }
-5. Security & Ethical Use
+
+
+## 5. Security & Ethical Use
 ⚠️ This tool is for authorised environments only (your own lab, systems you own, or explicit permission). It performs active TCP connections – unauthorised scanning may violate laws or policies. The developer is not responsible for misuse.
 
-6. Findings from the Lab
+## 6. Findings from the Lab
 When run against the Windows 11 target (192.168.3.12) with default common ports:
 
 Port	Service	State	Banner
@@ -82,13 +90,13 @@ Port	Service	State	Banner
 Others	–	Closed/Filtered	–
 Interpretation: The host’s firewall (Windows Defender) blocked most ports except RDP (which was intentionally enabled for the SOC lab). This tool proved that RDP was reachable – consistent with our earlier manual Nmap results.
 
-7. Limitations & Future Improvements
+## 7. Limitations & Future Improvements
 Limitation	Planned Enhancement
 No UDP scanning	Add UDP probe option
 Single‑threaded	Implement threading for speed
 Basic banner grabbing	Expand with protocol‑specific banners
 No service versioning	Integrate with Nmap’s service detection logic (future)
-8. Lessons Learned
+## 8. Lessons Learned
 Socket programming gives direct control over network probes.
 
 Structured output (JSON/CSV) makes results reusable for further analysis or SIEM ingestion.
@@ -99,14 +107,14 @@ Timeout handling is critical – too short = false negatives; too long = slow sc
 
 Documentation is as important as code – a clean README proves engineering mindset.
 
-9. How This Fits the Portfolio
+## 9. How This Fits the Portfolio
 Project	Skills Demonstrated
 Project 1 (Network Discovery)	Nmap, manual recon, interpretation
 Project 2 (SOC Lab)	SIEM, log analysis, incident response
 Project 3 (Python Auditor)	Automation, Python, data serialisation, tool building
 Together they show offensive awareness, defensive monitoring, and automation – a well‑rounded junior security professional.
 
-10. References
+## 10. References
 Python socket documentation
 
 Port scanning ethics
